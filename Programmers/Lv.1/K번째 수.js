@@ -1,9 +1,9 @@
 function solution(array, commands) {
-    let answer = [];
-    for(let i=0; i<commands.length; i++){
-        let sample=array.slice(commands[i][0]-1,commands[i][1]).sort((a,b)=>a-b)[commands[i][2]-1];
-        answer.push(sample);
-    } 
-   
+    let answer=[];
+    for(let num of commands){
+        let sample=[];
+        sample=array.slice(num[0]-1,num[1]).sort((a,b)=>a-b);
+        answer.push(sample[num[2]-1]);
+    }
     return answer;
 }

@@ -1,26 +1,15 @@
 function solution(n, lost, reserve) {
-    let answer = 0;
-    let student=[];
-    for(let index=1; index<=n; index++){
-     student[index]=1;
-    }
-    reserve.forEach(num=>student[num]++);
-    lost.forEach(number=>student[number]--);
+    let sample=[];
     
-    for(let k=1; k<=n; k++){
-        if(student[k]===0){
-            if(student[k-1]===2) {
-                student[k-1]--;
-                student[k]++;
-            } 
-            else if(student[k+1]===2){
-                student[k+1]--;
-                student[k]++;
-            }
+    for(let i=0; i<n; i++)sample.push(1);
+    for(let num of lost)sample[num-1]=sample[num-1]-1;
+    for(let val of reserve)sample[val-1]=sample[val-1]+1;
+    
+    for(let i=0; i<n; i++){
+        if((sample[i]==2&&sample[i+1]==0)||(sample[i]==0&&sample[i+1]==2)){
+            sample[i]=1; 
+            sample[i+1]=1;
         }
     }
-    
-    let result=student.filter(item=>item>0);
-    answer=result.length;
-    return answer;
+    return sample.filter((item)=>item>=1).length;
 }
