@@ -27,3 +27,4 @@ function solution(s) {
     }
     return Math.min(...answer);
 }
+//https://nakhyeon.tistory.com/10
