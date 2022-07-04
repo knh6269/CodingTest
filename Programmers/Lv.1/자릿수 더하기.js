@@ -1,6 +1,9 @@
 function solution(n)
 {   
-    n=String(n).split("");
-    if(n.length==1)return Number(n);
-    return n.reduce((sum,cur)=>Number(sum)+Number(cur));
+    n=String(n);
+    let sum=0;
+    for(let num of n){
+        sum+=Number(num);
+    }
+    return sum;
 }
